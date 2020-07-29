@@ -34,7 +34,40 @@ export default class Rejected extends React.Component{
             console.log(this);
         return (this.state.jobs.rejectedJobs.map((job)=>(
             <div>
-                <ul>
+                 <div className="container">
+                    <div className="card">
+                        <div className="title">
+                        {job.jobtitle}
+                        </div>
+                        <div className="jobrow">
+                            <div className="item">
+                                <h5>stipend</h5>
+                                {job.stipend}
+                            </div>
+                            <div className="item">
+                                <h5>Location</h5>
+                                {job.location}
+                            </div>
+                            <div className="item">
+                                <h5>Screen</h5>
+                                {job.screen}
+                            </div>
+                            <div className="item">
+                                <h5>Available</h5>
+                                {job.available}
+                            </div>
+                            <div className="item">
+                                <h5>Start Date</h5>
+                                {job.startdate}
+                            </div>
+                        </div>
+                        <div className="jobbuttons">
+                            {/* <button onClick={this.onReject} className="cancelbutton" id={job._id}>Deactive</button>  */}
+                            <button onClick={this.onAccept} className="acceptbutton" id={job._id}>Undo Reject</button>
+                        </div>
+                    </div>
+                    </div>
+                {/* <ul>
                     <li>   {job.jobtitle}</li>
                     <li>   {job.stipend}</li>
                     <li>   {job.location}</li>
@@ -44,7 +77,7 @@ export default class Rejected extends React.Component{
                     <li >   <button onClick={this.onAccept} id={job._id}>Undo Reject</button></li>
 
 
-                </ul>
+                </ul> */}
              
             </div>
         )))

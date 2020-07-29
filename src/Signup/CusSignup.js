@@ -8,7 +8,8 @@ class CusLogin extends React.Component{
     state={
         email:"",
         password:"",
-        isLoggedIn:this.isLoggedIn
+        username:"",
+
     }
     componentDidMount(){
       if(localStorage.getItem('token-cus')){
@@ -19,6 +20,10 @@ class CusLogin extends React.Component{
         this.state.email=e.target.value
         console.log(this.state);
     }
+    updateUsername= (e)=>{
+      this.state.username=e.target.value
+      console.log(this.state);
+  }
     updatePassword =(e)=>{
         this.state.password=e.target.value
         console.log(this.state);
@@ -26,15 +31,11 @@ class CusLogin extends React.Component{
     postLogin=(e)=> {
         e.preventDefault();
         console.log((this.state));
-        axios.post("http://localhost:5000/cus/login", {
-          email:this.state.email,   
-          password:this.state.password
+        axios.post("http://localhost:5000/cus/signup", {
+          user:this.state
         }).then(result => {
           if (result.status === 200) {
-            localStorage.setItem('token-cus', result.data.token);
-            this.setState({isLoggedIn:true})
-            console.log("cus");
-            this.props.history.push('/cus/home')
+            this.props.history.push('/cus/login')
           } else {
             console.log("Not found");
             return false;
@@ -45,25 +46,7 @@ class CusLogin extends React.Component{
         });
       }
 
-      renderPage(){
-          if(this.state.isLoggedIn===true){    
-            {this.props.history.push('/cus/home')}
-          }else{
-            return(
-            <div>
-                
-            Login Page
-            <form>
-                <input type="text" placeholder="name" onChange={(e)=>{this.updateEmail(e)}}/>
-                <br/>
-                <input type="password" placeholder="password"  onChange={this.updatePassword}/>
-                <br/>
-                <input type="submit" value="submit" onSubmit={this.postLogin}/>
-            </form>
-            </div>
-            )
-          }
-      }
+     
 render(){
     if(this.state.isLoggedIn===true){
         return( 
@@ -86,25 +69,31 @@ render(){
         <div className='formwrapper'> 
         <form >
         <div className="forminput" >
-          <div className="formheading">Login for Customer</div>
+          <div className="formheading">SignUp for Customer</div>
         </div>
           <div className="forminput" >
-          <div className="label"> <label for="">Name</label></div>
-          <input type="text" placeholder="name" onChange={(e)=>{this.updateEmail(e)}}/>
+          <div className="label"> <label for="">Email</label></div>
+          <input type="email" placeholder="name" onChange={(e)=>{this.updateEmail(e)}}/>
 
           </div>
           <div className="forminput" >
-          <div className="label"> <label for="">Paaword</label></div>
+          <div className="label"> <label for="">Username</label></div>
+          <input type="text" placeholder="name" onChange={(e)=>{this.updateUsername(e)}}/>
+
+          </div>
+          <div className="forminput" >
+          <div className="label"> <label for="">Password</label></div>
           <input type="password" placeholder="password"  onChange={this.updatePassword}/>
 
           </div>
+          
           <div className="forminput" >
 
-          <input type="button" className="submit" value="Login"  onClick={this.postLogin}/>
+          <input type="button" className="submit" value="Register"  onClick={this.postLogin}/>
 
           </div>
          <div className='forminput'>
-           Dont you have an account yet? <Link to='/cus/signup'>Signup here</Link>
+           Have an account already? <Link to='/cus/login'>Login here</Link>
 
          </div>
           </form>

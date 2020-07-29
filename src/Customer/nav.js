@@ -3,28 +3,23 @@ import {Link} from 'react-router-dom'
 export default function NavEmp(){
     return(
         <div>
-            <ul>
-                <Link to='/cus/home/jobs'>
-                    <li>
+            <div className="navflex">
+                <div className="navitems">
+                <Link className="navlink" to='/cus/home/jobs'>
                         Jobs
-                    </li>   
                 </Link>
-
-                <Link to='/cus/home/accepted'>
-                    <li>
-                        Accepted
-                    </li>   
+                </div>
+                <div className="navitems">
+                <Link className="navlink" to='/cus/home/accepted'>
+                        Accepted  
                 </Link>
-
-                <Link to='/cus/home/rejected'>
-                    <li>
+                </div>
+                <div className="navitems">
+                <Link className="navlink" to='/cus/home/rejected'>
                         Rejected
-                    </li>   
                 </Link>
-
-                
-            
-            </ul>
+                </div>
+            </div>
         </div>
     )
 }

@@ -26,11 +26,55 @@ export default class Jobs extends React.Component{
             }
         })  
     }
+    onReject(e){
+       
+        axios.post('http://localhost:5000/cus/jobs/reject',{job:{id:e.target.id}},{headers:{authorization:`Bearer ${localStorage.getItem('token-cus')}`}}).then(result=>{
+            if(result.status===200){    
+               console.log(result);  
+            } else{
+          return false;
+
+            }
+        })  
+    }
     mapJobsandStateRender(){
         if(!(this.state.jobs===undefined)){
         return (this.state.jobs.map((job)=>(
             <div>
-                <ul>
+                <div className="container">
+                    <div className="card">
+                        <div className="title">
+                        {job.jobtitle}
+                        </div>
+                        <div className="jobrow">
+                            <div className="item">
+                                <h5>stipend</h5>
+                                {job.stipend}
+                            </div>
+                            <div className="item">
+                                <h5>Location</h5>
+                                {job.location}
+                            </div>
+                            <div className="item">
+                                <h5>Screen</h5>
+                                {job.screen}
+                            </div>
+                            <div className="item">
+                                <h5>Available</h5>
+                                {job.available}
+                            </div>
+                            <div className="item">
+                                <h5>Start Date</h5>
+                                {job.startdate}
+                            </div>
+                        </div>
+                        <div className="jobbuttons">
+                            <button onClick={this.onReject} className="cancelbutton" id={job._id}>Deactive</button> 
+                            <button onClick={this.onAccept} className="acceptbutton" id={job._id}>Accept</button>
+                        </div>
+                    </div>
+                </div>
+                {/* <ul>
                     <li>   {job.jobtitle}</li>
                     <li>   {job.stipend}</li>
                     <li>   {job.location}</li>
@@ -38,9 +82,9 @@ export default class Jobs extends React.Component{
                     <li>   {job.available}</li>
                     <li>   {job.startdate}</li>
                     <li >   <button onClick={this.onAccept} id={job._id}>Accept</button></li>
-                    <li>   Deactive</li>
+                    <li>   <button onClick={this.onReject} id={job._id}>Deactive</button> </li>
 
-                </ul>
+                </ul> */}
              
             </div>
         )))
@@ -49,7 +93,6 @@ export default class Jobs extends React.Component{
     render(){
         return(
             <div>
-                hello
                {this.mapJobsandStateRender()}
             </div>
         )

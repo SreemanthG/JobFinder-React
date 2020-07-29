@@ -9,6 +9,7 @@ export default function Customer(props){
     console.log(props);
     return(
         <div>
+       
             <Router>
             <NavEmp />
                 <Switch>

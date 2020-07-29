@@ -1,0 +1,123 @@
+/* //Login */
+
+.formwrapper{
+    margin:0 auto;
+    width: 30%;
+    background-color: ghostwhite;
+    padding: 1em 2em;
+}
+
+.forminput{
+    padding: 5px 10px;
+    text-align: center;
+}
+.forminput .formheading{
+    font-size: 2rem;
+    font-weight: 900;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center !important;
+}
+.forminput .label{
+    padding: 5px 10px;
+    margin: 0.5em 0;
+    text-align: left !important;
+}
+.forminput input{
+    width: 90%;
+    height: 30px;
+    padding:0.5em 1em;
+    font-weight: 700;
+    font-size: medium;
+    margin-bottom: 10px;
+}
+
+.forminput .submit{
+
+    width: 50%;
+    height: 50px;
+    background-color:hotpink ;
+    border:0px solid black;
+    padding:0.5em 1em;
+    font-weight: 700;
+    font-size: medium;
+    margin: 20px 0;
+    color:white;
+}
+
+.navflex{
+    display: flex;
+   
+    padding: 20px 0 10px 0;
+    margin: 0 3em;
+    border-bottom: 1px solid black;
+    justify-content: space-around;
+}
+.navitems{
+
+    /* font-weight: bold; */
+    font-size: 1.3em;
+
+}
+.navlink{
+
+text-decoration: none;
+
+}
+.container{
+    padding:4em 5em;
+}
+.card{
+    width:100%;
+    padding: 1em 1.5em;
+    border: 1px solid black;
+    border-radius: 7px;
+}
+.title{
+    font-size:2rem;
+    font-weight: 900;
+}
+.jobrow{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.jobitems{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.jobbuttons{
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+}
+.acceptbutton{
+    height: 50px;
+    background-color:hotpink ;
+    border:0px solid black;
+    padding:0.5em 1em;
+    margin:5em 4em;
+    font-weight: 700;
+    font-size: medium;
+    margin: 20px 0;
+    color:white;
+}
+.cancelbutton{
+    height: 50px;
+
+    border:0px solid black;
+    padding:0.5em 1em;
+    margin:5em 4em;
+    font-weight: 700;
+    font-size: medium;
+    margin: 20px 0;
+    color:black;
+}
+@media screen and (max-width: 780px) {
+    .formwrapper{
+        width:80%;
+    }
+
+}

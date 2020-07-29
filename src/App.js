@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {BrowserRouter as Router,Switch,Route, Redirect,withRouter} from 'react-router-dom'
+import {BrowserRouter as Router,Switch,Route, Redirect,withRouter,Link} from 'react-router-dom'
 import decode from 'jwt-decode'
 // import history from './history'
 import EmpLogin from './Login/EmpLogin'
@@ -11,6 +11,8 @@ import Customer from './Customer/Customer'
 import AuthComponent from './Auth/AuthComponent'
 import AuthComponentCus from './Auth/AuthComponentCus'
 import axios from 'axios'
+import EmpSignup from './Signup/EmpSignup';
+import CusSignup from './Signup/CusSignup';
 
 const checkAuth = () =>{
   const token = localStorage.getItem('token');
@@ -45,37 +47,22 @@ const checkAuth = () =>{
 function App(props) {
   const [user, setUser] = useState(0);
 
-  function verifyemploy(){
-    const jwt = localStorage.getItem("token-emp");
-    // console.log(jwt);
-    if(!jwt){
-        // this.props.history.push('/emp/login')
-      return <Redirect to='/emp/login' />
-    }
-   axios.get("http://localhost:5000/emp",{headers:{Authorization: `Bearer ${jwt}`}}).then(res=>setUser(
-      res.data
-   )).catch(err =>{
-       console.log(err);
-       localStorage.removeItem('token-emp')
-      // props.history.push('/emp/login')\
-      return <Redirect to='/emp/login' />
-
-   })
-  
-  }
-
   return (
     <Router>
     <div className="App">
-     Hello
+
+     <Link to="/cus/home">Customer</Link>
+     <Link to="/emp/home">Employee</Link>
+
      <Switch>
      <Route exact path='/emp/login' component={EmpLogin} />
      <Route exact path='/cus/login' component={CusLogin} />
-   
+     <Route exact path='/emp/signup' component={EmpSignup} />
+     <Route exact path='/cus/signup' component={CusSignup} />
      {/* <AuthRoute exact path='/emp/login' component={Employee} /> */}
 
     <AuthComponent path='/emp/home'>
-  <Route exact {...props} component={Employee}  />
+      <Route exact {...props} component={Employee}  />
     </AuthComponent>
     <AuthComponentCus path='/cus/home' >
      <Route exact {...props} component={Customer}  />
